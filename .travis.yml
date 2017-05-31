@@ -1,0 +1,14 @@
+language: asm
+
+compiler: 
+    - nasm
+
+addons:
+    apt:
+        packages:
+            - nasm
+
+dist: xenial
+
+script:
+    - make
