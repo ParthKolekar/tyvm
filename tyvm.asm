@@ -1,19 +1,20 @@
-ORG         0x7c00 ; Origin 
-BITS        16
+ORG			0x7c00
+BITS		16
 
-mov         si, ty
-mov         ah, 0xe
+mov			si, ty
+mov			ah, 0xe
 
-loop:       lodsb
-    or      al, al
-    jz      doNothing
-    int     0x10
-    jmp 	loop
+loop:
+	lodsb
+	or		al, al
+	jz		spin
+	int		0x10
+	jmp		loop
 
-doNothing: 
-    jmp         $
+spin: 
+	jmp		$
 
-ty db "Thank You", 0
+ty DB "Thank You", 0
 
-times 510 - ($ - $$) db 0
-dw 0xaa55
+TIMES 510 - ($ - $$) DB 0
+DW 0xaa55
